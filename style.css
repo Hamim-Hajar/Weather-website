@@ -1,0 +1,242 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  
+  body{
+      color: white;
+      background-image: url("/images/sunset.jpg");
+      background-size: cover;
+      top:0;
+      left:0;
+      bottom: 0;
+      right: 0;
+     
+      z-index: -1;
+      
+    }
+    .container{
+      /* display: flex;
+      flex-direction: column;
+      margin: 20px; */
+      padding-top: 20px;
+      padding-bottom: 150px;
+      position: relative;
+      z-index: 1;
+    }
+    .searchContainer {
+      width: 100%;
+      position: relative;
+      
+    }
+    .searchContainer::after{
+      content:"" ;
+      clear: both;
+      display: block;
+      position: absolute;
+      width: 30%;
+      height: 100%;
+     
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .searchContainer input{
+      height: 50px;
+     width: 71%;
+      border-radius: 50px;
+     border: none;
+      padding: 0 30px;
+      font-weight: 600;
+      font-size: 16px;
+      text-transform: capitalize;
+      position: relative;
+      margin-left: 100px;
+      background-color: rgba(255, 255, 255, 0.664);
+      
+    }
+    .searchContainer button  {
+      position: absolute;
+      width: 100px;
+      height: 40px;
+      right: 6px;
+      font-size: 16px;
+      top: 5px;
+      background-color: rgb(127, 152, 198);
+      border-radius: 50px;
+      border:none;
+      cursor: pointer;
+      margin-right: 21%;
+      
+      
+    }
+    
+   
+    .currentForcast{
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .currentForcastInfo{
+      display: flex;
+      width:500px;
+     
+    }
+    
+    
+    .currentForcastDate {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      width: 180px;
+      background-color: rgba(255, 255, 255, 0.664);
+      margin-top: 10px;
+      border-radius: 5%;
+      
+      
+    }
+    .currentForcastDate div{
+  
+      text-align: center;
+    }
+    #dayTemperature {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 48px;
+    }
+    #currentTemperatureUnit{
+      font-size: 16px;
+      display: inline-block;
+      padding-left: 10px;
+    }
+    .currentConditions {
+      padding-left: 10px;
+      color: whitesmoke;
+      background-color: rgba(255, 255, 255, 0.664);
+     margin-top: 10px;
+     border-radius: 5%;
+     
+    }
+    .currentConditions div{
+      gap: 3%;
+    }
+    .dailyForcastContainer {
+      display: flex;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      text-align: center;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.664);
+      border-radius: 10px;
+    }
+    .dailyForcast{
+      margin-right: 10px;
+      width: 75px;
+      flex-wrap: wrap;
+    }
+    .weekday{
+      text-align: center;
+    }
+    .maxMinTemp{
+      text-align: center;
+    }
+    .temp{
+      padding-right: 5px;
+    }
+    
+    #alert {
+      width: 300px;
+      height: 40px;
+      display: none;
+      position: fixed;
+      text-align: center;
+      align-content: center;
+      justify-content: center;
+      left:30%;
+      top:20%;
+      transform: translate(-50%);
+      font-size: medium;
+      font-weight: bold;
+      z-index: 1000;
+      background-color: whitesmoke;
+      color:#d10404;
+      border-radius: 5px;
+      align-items: center;
+    }
+    
+    @media (max-width:415px){
+      .searchContainer input {
+        width: 85%;
+      }
+      .currentForcastDate{
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+        border-bottom: 1px solid lightgray;
+      }
+      .currentForcastDate div {
+        margin: 10px;
+        text-align: center;
+      }
+      .dailyForcastContainer {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      .dailyForcast{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .maxMinTemp{
+        display: flex;
+      }
+      .maxMinTemp span {
+        margin-left: 10px;
+        width: 20px;
+      }
+      #alert{
+        left:50%;
+      }
+      body {
+        background-image: url(vertical.jpg);
+      }
+    }
+    /***** cards style*****/
+    .weather-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 20px;
+  }
+    .weather-card {
+      width: 250px;
+      height: 250px;
+      background-color: rgba(255, 255, 255, 0.664);
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+  
+  }
+  .location {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+  }
+  
+  .temperature,
+  .conditions,
+  .humidity,
+  .wind-speed {
+      margin-bottom: 10px;
+  }
+  
+  img{
+      width: 30%;
+  }
