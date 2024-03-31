@@ -1,7 +1,7 @@
 const dailyForcastContainer = document.querySelector(".dailyForcastContainer");
 const searchButton = document.getElementById("searchButton");
 const searchBox = document.getElementById("search");
-const cities = ["Tanger", "Rabat", "Fes", "Kasba Tadla"];
+const cities = ["Tanger", "Rabat", "Fes", "Livry"];
 
 searchButton.addEventListener("click", async function () {
   const city = searchBox.value;
@@ -156,58 +156,42 @@ async function getWeather(city) {
         throw error;
     }
 }
-  function displayWeather(city, data) {
-    const weatherContainer = document.getElementById('weather-container');
-    const weatherCard = document.createElement('div');
-    weatherCard.classList.add('weather-card');
+function displayWeather(city, data) {
+  const weatherContainer = document.getElementById('weather-container');
+  const weatherCard = document.createElement('div');
+  weatherCard.classList.add('weather-card');
 
+  const locationElement = document.createElement('div');
+  locationElement.classList.add('location');
+  locationElement.textContent = data.name;
 
-    const locationElement = document.createElement('div');
+  const temperatureElement = document.createElement('div');
+  temperatureElement.textContent = `Temperature: ${data.main.temp} °C`;
 
-    locationElement.classList.add('location');
-    locationElement.textContent = data.name;
+  const conditionsElement = document.createElement('div');
+  conditionsElement.textContent = `Conditions: ${data.weather[0].description}`;
 
-    const temperatureElement = document.createElement('div');
+  const imageElement = document.createElement('img');
+  const iconCode = data.weather[0].icon;
+  const imageUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+  imageElement.src = imageUrl;
 
-    temperatureElement.textContent = `Température: ${data.main.temp} °C`;
+  const humidityElement = document.createElement('div');
+  humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
 
-    const conditionsElement = document.createElement('div');
-    conditionsElement.textContent = `Conditions: ${data.weather[0].description}`;
+  const windSpeedElement = document.createElement('div');
+  windSpeedElement.textContent = `Wind speed: ${data.wind.speed} m/s`;
 
-    const image = document.createElement('img');
-    switch (data.weather[0].description){
-        case 'clear':
-            image.src = './images/bg.jpg';
-            break;
-        case 'nuageux':
-            image.src = './images/bg.jpg';
-            break;
-        case 'partiellement nuageux':
-            image.src = './images/bg.jpg';
-            break;
-        case 'ciel dégagé':
-            image.src = './images/bg.jpg';
-            break;
-        default:
-            image.src = './images/bg.jpg';
-            break;
-    }
+  weatherCard.appendChild(locationElement);
+  weatherCard.appendChild(imageElement);
+  weatherCard.appendChild(temperatureElement);
+  weatherCard.appendChild(conditionsElement);
+  weatherCard.appendChild(humidityElement);
+  weatherCard.appendChild(windSpeedElement);
 
-    const humidityElement = document.createElement('div');
-    humidityElement.textContent = `Humidité: ${data.main.humidity}%`;
-
-    const windSpeedElement = document.createElement('div');
-    windSpeedElement.textContent = `Vitesse du vent: ${data.wind.speed} m/s`;
-
-    weatherCard.appendChild(locationElement);
-    weatherCard.appendChild(image);
-    weatherCard.appendChild(temperatureElement);
-    weatherCard.appendChild(conditionsElement);
-    weatherCard.appendChild(humidityElement);
-    weatherCard.appendChild(windSpeedElement);
-
-    weatherContainer.appendChild(weatherCard);
+  weatherContainer.appendChild(weatherCard);
 }
+
 
 // Fonction principale pour obtenir et afficher les données météorologiques de chaque ville
 async function fetchAndDisplayWeather() {
